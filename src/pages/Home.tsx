@@ -54,7 +54,7 @@ const BOOKS = [
     blurb: "a deep, resonant northern perspective that channels the spirit of traditional storytelling, through testimonies and personal reflections, a gathering of dene elders addresses the climate emergency with intricate knowledge systems and natural laws.",
     href: "https://penguinrandomhouse.ca",
     year: "2026",
-    cover: "https://githubusercontent.com",
+    cover: "images/elder.jpg",
     alt: "mother earth is our elder book cover",
   },
   {
