@@ -140,35 +140,38 @@
   color: var(--color-highlight);
 }
 
-/* ---- social buttons added under the bottom — same size, teal outline ---- */
+/* ---- full-width social buttons sit below the existing pair ---- */
 .builder .support-actions {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-/* github + coffee keep their original look; instagram/facebook match the
-   outline style already shown for “Follow on Facebook” */
-.builder .support-button-instagram,
-.builder .support-button-facebook {
+.builder .support-button-social {
+  grid-column: 1 / -1;
+}
+.builder .support-button-social {
   color: #1a1c1e;
   background: #fffefb;
   border-color: var(--highlight-border);
 }
-.builder .support-button-instagram .support-button-icon,
-.builder .support-button-facebook .support-button-icon {
+.builder .support-button-social .support-button-icon {
   color: var(--highlight-text);
   background: var(--highlight-soft);
 }
-.builder .support-button-instagram:hover,
-.builder .support-button-facebook:hover {
+.builder .support-button-social:hover {
   color: #1a1c1e;
   background: var(--color-highlight);
   border-color: var(--color-highlight);
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(0, 153, 132, 0.24);
 }
-.builder .support-button-instagram:hover .support-button-icon,
-.builder .support-button-facebook:hover .support-button-icon {
+.builder .support-button-social:hover .support-button-icon {
   color: #1a1c1e;
   background: rgba(255, 255, 255, 0.82);
+}
+
+@media (max-width: 390px) {
+  .builder .support-actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 /* ---- busy drop zone ---- */

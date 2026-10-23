@@ -39,8 +39,7 @@ export const ADVANCED = [
   { id: "dropdown-text", key: "dropdownText", label: "Dropdown Menu Text Color" },
 ] as const;
 
-/** Adrian Kestrel palette — one-click preset: warm paper editor, teal-scripted
- *  dark chrome, honey-gold text and a deep bronze menu bar. */
+/** The Adrian P Kestrel site palette, offered as a one-click starting point. */
 export const SITE_PALETTE: Colors = {
   binder: { background: "#1D2223", text: "#D9C894" },
   editor: { background: "#F5E8C7", text: "#000000" },

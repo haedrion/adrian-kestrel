@@ -13,28 +13,8 @@ import {
   SquarePen,
   TriangleAlert,
 } from "lucide-react";
-
-/* tiny brand marks — not in Lucide, so inline SVG keeps the look exact */
-function InstagramMark(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" strokeWidth="1.7" />
-      <circle cx="12" cy="12" r="4.2" stroke="currentColor" strokeWidth="1.7" />
-      <circle cx="17.2" cy="6.8" r="1.15" fill="currentColor" />
-    </svg>
-  );
-}
-function FacebookMark(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M14 8.2H15.8V4.9C15.4 4.85 14.4 4.7 13.2 4.7C10.7 4.7 9 6.2 9 9V11.4H5.8V15.1H9V20.3H12.8V15.1H15.4L15.9 11.4H12.8V9.4C12.8 8.4 13 8.2 14 8.2Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
 import ScrivenerPreview from "../components/ScrivenerPreview";
+import InstagramIcon from "../components/InstagramIcon";
 import { mix, tint, luminance, autoText, rgbTriple } from "../lib/color";
 import { extractSwatches, isImageFile, mapToTheme, type Swatch } from "../lib/palette";
 import { buildPackage, downloadScrtheme } from "../lib/exportTheme";
@@ -735,26 +715,26 @@ export default function Builder() {
                     Buy Me a Coffee
                   </a>
                   <a
-                    className="support-button support-button-instagram"
-                    href={LINKS.instagram}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    <span className="support-button-icon">
-                      <InstagramMark width={15} height={15} />
-                    </span>
-                    Follow on Instagram
-                  </a>
-                  <a
-                    className="support-button support-button-facebook"
+                    className="support-button support-button-coffee support-button-social support-button-facebook"
                     href={LINKS.facebookFollow}
                     target="_blank"
                     rel="noreferrer noopener"
                   >
                     <span className="support-button-icon">
-                      <FacebookMark width={15} height={15} />
+                      <ShieldCheck size={15} strokeWidth={2} aria-hidden="true" />
                     </span>
                     Follow on Facebook
+                  </a>
+                  <a
+                    className="support-button support-button-coffee support-button-social"
+                    href={LINKS.instagram}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <span className="support-button-icon">
+                      <InstagramIcon />
+                    </span>
+                    Follow on Instagram
                   </a>
                 </div>
                 <p className="support-footnote">

@@ -13,7 +13,7 @@ export default function Nav({ active, onGoSection }: NavProps) {
         <a
           className="brand-lockup"
           href="#top"
-          aria-label="Adrian Kestrel, back to top"
+          aria-label="adrian p kestrel, back to top"
           onClick={(e) => {
             e.preventDefault();
             onGoSection("top");

@@ -2,6 +2,7 @@
 
 export const LINKS = {
   instagram: "https://www.instagram.com/haedrion/",
+  /* Updated: the facebook link is now a direct FOLLOW link. */
   facebookFollow: "https://www.facebook.com/Adrian.Kestrel/",
   github: "https://github.com/haedrion",
   buyMeACoffee: "https://www.buymeacoffee.com/haedrion",
