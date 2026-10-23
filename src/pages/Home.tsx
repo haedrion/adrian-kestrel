@@ -323,13 +323,13 @@ export default function Home() {
                       loading="lazy" 
                       decoding="async" 
                     />
-                  ) : (
-                    <div className="cover-placeholder" aria-hidden="true">
-                      <span className="spark" />
-                      <span>{b.no} • cover pending</span>
-                    </div>
-                  )}
-                </div>
+                            ) : (
+            <div className="cover-placeholder" aria-hidden="true">
+              <span className="spark" />
+              <span>{b.no} • cover pending</span>
+            </div>
+          )}
+        </div> {/* This closes your card-image-slot cleanly! */}
 
                 <div className="card-content-block">
                   <span className="card-tag">{b.tag}</span>
