@@ -317,7 +317,7 @@ export default function Home() {
               <a href={b.href} target="_blank" rel="noopener noreferrer" className="card-wrapper-link">
                 
                 {/* 1. Inserted Book Mini Graphic Container */}
-                <div className="book-mini">
+                <div className="card-image-slot">
                   {cover ? (
                     <img src={cover} alt={b.alt} className="book-thumbnail" loading="lazy" decoding="async" />
                   ) : (
