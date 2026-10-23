@@ -309,12 +309,12 @@ export default function Home() {
           </div>
 
           <div className="reading-ledger-grid">
-            {BOOKS.map((b, i) => {
-              const cover = coverFor(b.img);
-              return (
-                <article key={b.no} className={`ledger-card reveal reveal-d${i}`}>
-                  <a href={b.store} target="_blank" rel="noopener noreferrer" className="card-wrapper-link">
-                    <div className="card-image-slot">
+                    {BOOKS.map((b, i) => {
+          const cover = b.cover; // Fixed from b.img to match data property
+          return (
+            <article key={b.no} className={`ledger-card reveal reveal-d${i}`}>
+              <a href={b.href} target="_blank" rel="noopener noreferrer" className="card-wrapper-link">
+                <div className="card-image-slot">
                       {cover ? (
                         <img src={cover} alt={b.alt} className="book-thumbnail" loading="lazy" decoding="async" />
                       ) : (
