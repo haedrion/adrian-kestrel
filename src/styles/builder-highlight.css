@@ -1,0 +1,205 @@
+/* ============================================================
+   THEME BUILDER HIGHLIGHTS — the same #009984 accent system the
+   main Adrian Kestrel page uses: teal sparks, teal live dots,
+   teal focus rings, teal success states. Text keeps the darker
+   --highlight-text (#007568) so small type stays legible on paper.
+   ============================================================ */
+
+.builder {
+  --color-highlight: #009984;
+  --highlight-text: #007568;
+  --highlight-soft: rgba(0, 153, 132, 0.06);
+  --highlight-border: rgba(0, 153, 132, 0.45);
+
+  /* the builder page is paper-light, so it re-declares the dark-scope
+     typography the shared nav brings in from the main page */
+  color: #272c29;
+  background: #f7f6f2;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+.builder h1,
+.builder h2,
+.builder h3 {
+  color: inherit;
+}
+.builder code,
+.builder kbd {
+  font-family: SFMono-Regular, Consolas, monospace;
+}
+
+.builder ::selection {
+  color: #f7f6f2;
+  background: #009984;
+}
+
+/* ---- live dots + spark diamonds (mirrors .status-dot / .spark) ---- */
+.builder .live-dot {
+  background: var(--color-highlight);
+  box-shadow: 0 0 8px rgba(0, 153, 132, 0.55);
+}
+.builder .live-dot:after {
+  border-color: var(--highlight-border);
+}
+.builder .caption-spark,
+.builder .support-spark {
+  border-color: var(--color-highlight);
+  box-shadow: inset 0 0 0 1px rgba(0, 153, 132, 0.12);
+}
+
+/* ---- eyebrow count + step markers ---- */
+.builder .controls-count {
+  color: #969991;
+  letter-spacing: 0.17em;
+}
+.builder .controls-count b {
+  color: var(--highlight-text);
+  font-weight: 800;
+}
+.builder .guide-steps-ol .guide-step-marker {
+  color: var(--highlight-text);
+  border-color: var(--highlight-border);
+  background: var(--highlight-soft);
+}
+.builder .guide-steps-ul .guide-step-marker:before {
+  background: var(--color-highlight);
+}
+.builder .package-strip-badge {
+  color: var(--highlight-text);
+  border-color: var(--highlight-border);
+  background: var(--highlight-soft);
+}
+.builder .package-file.pointer .package-file-role {
+  color: var(--highlight-text);
+}
+
+/* ---- input focus rings ---- */
+.builder .hex-input:focus,
+.builder .name-input:focus {
+  border-color: var(--color-highlight);
+  box-shadow: 0 0 0 3px rgba(0, 153, 132, 0.16);
+}
+.builder .color-swatch:focus-visible {
+  outline: 2px solid var(--color-highlight);
+  outline-offset: 2px;
+}
+.builder :focus-visible {
+  outline-color: var(--color-highlight);
+}
+
+/* ---- palette section marker bar ---- */
+.builder .palette-section-active:before {
+  background: var(--color-highlight);
+}
+
+/* ---- drop zone: drag-over state turns teal ---- */
+.builder .drop-zone-over {
+  color: var(--highlight-text);
+  background: var(--highlight-soft);
+  border-color: var(--color-highlight);
+  border-style: solid;
+}
+.builder .drop-zone:hover {
+  border-color: var(--highlight-border);
+}
+
+/* ---- preview pane locator ---- */
+.builder .pane-highlight {
+  box-shadow: inset 0 0 0 2px rgba(0, 153, 132, 0.85);
+}
+
+/* ---- swatches ---- */
+.builder .swatch {
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.builder .swatch:hover {
+  transform: translateY(-2px);
+}
+.builder .swatch-chip {
+  transition: box-shadow 0.22s, outline-color 0.22s;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+}
+.builder .swatch:hover .swatch-chip,
+.builder .swatch:focus-visible .swatch-chip {
+  outline-color: var(--color-highlight);
+}
+.builder .swatch:hover code,
+.builder .swatch:focus-visible code {
+  color: var(--highlight-text);
+}
+
+/* ---- export button + status ---- */
+.builder .export-button:hover:not(:disabled) .export-button-icon {
+  background: var(--color-highlight);
+}
+.builder .export-message-success {
+  color: var(--highlight-text);
+}
+.builder .export-message-success svg {
+  color: var(--color-highlight);
+}
+
+/* ---- social buttons added under the bottom — same size, teal outline ---- */
+.builder .support-actions {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+/* github + coffee keep their original look; instagram/facebook match the
+   outline style already shown for “Follow on Facebook” */
+.builder .support-button-instagram,
+.builder .support-button-facebook {
+  color: #1a1c1e;
+  background: #fffefb;
+  border-color: var(--highlight-border);
+}
+.builder .support-button-instagram .support-button-icon,
+.builder .support-button-facebook .support-button-icon {
+  color: var(--highlight-text);
+  background: var(--highlight-soft);
+}
+.builder .support-button-instagram:hover,
+.builder .support-button-facebook:hover {
+  color: #1a1c1e;
+  background: var(--color-highlight);
+  border-color: var(--color-highlight);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 153, 132, 0.24);
+}
+.builder .support-button-instagram:hover .support-button-icon,
+.builder .support-button-facebook:hover .support-button-icon {
+  color: #1a1c1e;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+/* ---- busy drop zone ---- */
+.builder .drop-zone-busy {
+  color: var(--highlight-text);
+}
+
+/* ---- support + reset buttons ---- */
+.builder .support-button-coffee:hover {
+  color: #1a1c1e;
+  background: var(--color-highlight);
+  border-color: var(--color-highlight);
+}
+.builder .support-button-coffee:hover .support-button-icon {
+  color: #1a1c1e;
+  background: rgba(255, 255, 255, 0.82);
+}
+.builder .reset-button:hover {
+  color: var(--highlight-text);
+}
+
+/* ---- the shared nav bar keeps its dark band, with the teal active underline ---- */
+.builder .nav-links a.active {
+  color: #d68a54;
+  border-bottom-color: var(--color-highlight);
+}
+.builder .nav-status .status-dot {
+  background: var(--color-highlight);
+  box-shadow: 0 0 8px var(--color-highlight);
+}
+.builder .nav-status {
+  border-color: var(--highlight-border);
+  color: #9ea4a8;
+}
