@@ -418,10 +418,11 @@ h1, h2, h3.display {
     text-decoration: none;
 }
 .card-image-slot {
-    height: 320px;
-    background: #1d2024;
-    border-bottom: var(--border-thin);
-    overflow: hidden;
+  width: 100%;
+  aspect-ratio: 5 / 7; /* Standard elegant book cover dimensions */
+  background: #1d2024;
+  border-bottom: var(--border-thin);
+  overflow: hidden;
 }
 .book-thumbnail {
     width: 100%;
