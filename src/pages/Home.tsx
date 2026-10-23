@@ -310,29 +310,42 @@ export default function Home() {
           </div>
 
           <section className="reading-ledger-grid">
-            {BOOKS.map((b, i) => {
-              const cover = b.cover;
-              return (
-                <article key={b.title} className={`ledger-card reveal reveal-d${i}`}>
-                  <a href={b.href} target="_blank" rel="noopener noreferrer" className="card-wrapper-link">
-                    <div className="book-mini">
-                      <img src={cover} alt={b.alt} className="book-thumbnail" />
+                    {BOOKS.map((b, i) => {
+          const cover = b.cover;
+          return (
+            <article key={b.no} className={`ledger-card reveal reveal-d${i}`}>
+              <a href={b.href} target="_blank" rel="noopener noreferrer" className="card-wrapper-link">
+                
+                {/* 1. Inserted Book Mini Graphic Container */}
+                <div className="book-mini">
+                  {cover ? (
+                    <img src={cover} alt={b.alt} className="book-thumbnail" loading="lazy" decoding="async" />
+                  ) : (
+                    <div className="cover-placeholder" aria-hidden="true">
+                      <span className="spark" />
+                      <span>{b.no} • cover pending</span>
                     </div>
-                    <div className="card-content-block">
-                      <span className="card-tag">
-                        {b.no} / {b.tag}
-                      </span>
-                      <h3 className="book-title">{b.title}</h3>
-                      <h4 className="book-author">{b.author}</h4>
-                      <p className="book-review-text">{b.blurb}</p>
-                      <div className="card-footer-meta">
-                        notes <ArrowRight /> | {b.year}
-                      </div>
-                    </div>
-                  </a>
-                </article>
-              );
-            })}
+                  )}
+                </div>
+
+                {/* 2. Text Details Block */}
+                <div className="card-content-block">
+                  <span className="card-tag">{b.tag}</span>
+                  <h3 className="book-title">{b.title}</h3>
+                  <h4 className="book-author">{b.author}</h4>
+                  <p className="book-review-text">{b.blurb}</p>
+                </div>
+
+                {/* 3. Footer Action */}
+                <div className="card-footer-meta">
+                  <span>notes</span>
+                  <ArrowUpRight className="lucide-arrow-right" />
+                </div>
+
+              </a>
+            </article>
+          );
+        })}
           </section>
         </div>
       </section>
