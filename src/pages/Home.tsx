@@ -311,7 +311,7 @@ export default function Home() {
 
           <section className="reading-ledger-grid">
                     {BOOKS.map((b, i) => {
-          const cover = b.cover;
+          const cover = b.img;
           return (
             <article key={b.no} className={`ledger-card reveal reveal-d${i}`}>
               <a href={b.href} target="_blank" rel="noopener noreferrer" className="card-wrapper-link">
