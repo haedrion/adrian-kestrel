@@ -307,16 +307,23 @@ export default function Home() {
           </div>
 
           <section className="reading-ledger-grid">
-                    {BOOKS.map((b, i) => {
+                   {BOOKS.map((b, i) => {
           const cover = b.cover;
           return (
             <article key={b.no} className={`ledger-card reveal reveal-d${i}`}>
               <a href={b.href} target="_blank" rel="noopener noreferrer" className="card-wrapper-link">
                 
-                {/* 1. Inserted Book Mini Graphic Container */}
-                <div className="book-mini">
+                {/* THIS IS THE FIXED SLOT HOUSING THE MISSING IMAGE ELEMENT */}
+                <div className="card-image-slot">
                   {cover ? (
-                    <img src={cover} alt={b.alt} className="book-thumbnail" loading="lazy" decoding="async" />
+                    <img 
+                      src={cover} 
+                      alt={b.alt} 
+                      className="book-thumbnail" 
+                      loading="lazy" 
+                      decoding="async" 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
                   ) : (
                     <div className="cover-placeholder" aria-hidden="true">
                       <span className="spark" />
@@ -325,7 +332,6 @@ export default function Home() {
                   )}
                 </div>
 
-                {/* 2. Text Details Block */}
                 <div className="card-content-block">
                   <span className="card-tag">{b.tag}</span>
                   <h3 className="book-title">{b.title}</h3>
@@ -333,7 +339,6 @@ export default function Home() {
                   <p className="book-review-text">{b.blurb}</p>
                 </div>
 
-                {/* 3. Footer Action */}
                 <div className="card-footer-meta">
                   <span>notes</span>
                   <ArrowUpRight className="lucide-arrow-right" />
