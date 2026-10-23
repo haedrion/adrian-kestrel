@@ -50,12 +50,11 @@ const BOOKS = [
     no: "no. 01",
     tag: "non-fiction",
     title: "mother earth is our elder",
-    author: "katłı̨̀ą lafferty",
-    blurb:
-      "a deep, resonant northern perspective that channels the spirit of traditional storytelling. through testimonies and personal reflections, a gathering of dene elders addresses the climate emergency with intricate knowledge systems and natural laws.",
-    href: "https://www.penguinrandomhouse.ca/books/755796/mother-earth-is-our-elder-by-katlia-lafferty/9780771018572",
+    author: "katlia lafferty",
+    blurb: "a deep, resonant northern perspective that channels the spirit of traditional storytelling, through testimonies and personal reflections, a gathering of dene elders addresses the climate emergency with intricate knowledge systems and natural laws.",
+    href: "https://penguinrandomhouse.ca",
     year: "2026",
-    cover: "images/elder.jpg",
+    cover: "https://githubusercontent.com",
     alt: "mother earth is our elder book cover",
   },
   {
@@ -63,38 +62,36 @@ const BOOKS = [
     tag: "dark fantasy",
     title: "weaveworld",
     author: "clive barker",
-    blurb:
-      "evocative, alluring, and truly engrossing. having re-bought this epic tale over and over through the years, i never tire of it. listening to it now on audible, finally hearing the canvas of the carpet unfurl through another's voice.",
-    href: "https://www.goodreads.com/en/book/show/52640.Weave_World",
-    year: "2026",
-    cover: "images/weaveworld.jpg",
-    alt: "weaveworld by clive barker book cover",
+    blurb: "evocative, alluring, and truly engrossing. having re-bought this epic tale over and over through the years, i never tire of it. listening to it now on audible, finally hearing the canvas of the carpet unfurl through another's voice.",
+    href: "https://goodreads.com",
+    year: "1987",
+    cover: "https://githubusercontent.com",
+    alt: "weaveworld book cover",
   },
   {
     no: "no. 03",
     tag: "urban fantasy",
     title: "neverwhere",
     author: "neil gaiman",
-    blurb:
-      "a non-stop journey through the veil. this story had me flipping pages deep into the night. magical, mesmerizing, and taut with an imagination that only gaiman at his absolute best can summon from the shadows of london below.",
-    href: "https://www.goodreads.com/en/book/show/14497.Neverwhere",
-    year: "2026",
-    cover: "images/neverwhere.jpg",
-    alt: "neverwhere by neil gaiman book cover",
+    blurb: "a non-stop journey through the veil. this story had me flipping pages deep into the night. magical, mesmerizing, and taut with an imagination that only gaiman at his absolute best can summon from the shadows of london below.",
+    href: "https://goodreads.com",
+    year: "1996",
+    cover: "https://githubusercontent.com",
+    alt: "neverwhere book cover",
   },
   {
     no: "no. 04",
     tag: "craft & writing",
     title: "invisible ink: a practical guide to building stories that resonate",
     author: "brian mcdonald",
-    blurb:
-      "a masterclass on the internal scaffolding of text. mcdonald strips back the fluff to expose the simplicity that holds even the most complex narratives upright. an essential piece of architecture that remains vital to revisit.",
-    href: "https://www.goodreads.com/en/book/show/7818660-invisible-ink",
-    year: "2026",
-    cover: "images/invisible-ink.jpg",
-    alt: "invisible ink by brian mcdonald book cover",
-  },
+    blurb: "a masterclass on the internal scaffolding of text. mcdonald strips back the fluff to expose the simplicity that holds even the most complex narratives upright. an essential piece of architecture that remains vital to revisit.",
+    href: "https://goodreads.com",
+    year: "2010",
+    cover: "https://githubusercontent.com",
+    alt: "invisible ink book cover",
+  }
 ];
+
 
 const FEED = [
   {
