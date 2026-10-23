@@ -307,13 +307,13 @@ export default function Home() {
           </div>
 
           <section className="reading-ledger-grid">
-                   {BOOKS.map((b, i) => {
+                           {BOOKS.map((b, i) => {
           const cover = b.cover;
           return (
             <article key={b.no} className={`ledger-card reveal reveal-d${i}`}>
               <a href={b.href} target="_blank" rel="noopener noreferrer" className="card-wrapper-link">
                 
-                {/* THIS IS THE FIXED SLOT HOUSING THE MISSING IMAGE ELEMENT */}
+                {/* THIS IS THE CARD SLOT WIRING IN THE MISSING IMAGE ELEMENT */}
                 <div className="card-image-slot">
                   {cover ? (
                     <img 
@@ -322,7 +322,6 @@ export default function Home() {
                       className="book-thumbnail" 
                       loading="lazy" 
                       decoding="async" 
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
                   ) : (
                     <div className="cover-placeholder" aria-hidden="true">
@@ -348,6 +347,7 @@ export default function Home() {
             </article>
           );
         })}
+
           </section>
         </div>
       </section>
