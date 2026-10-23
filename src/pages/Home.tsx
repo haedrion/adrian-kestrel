@@ -314,16 +314,16 @@ export default function Home() {
           return (
             <article key={b.no} className={`ledger-card reveal reveal-d${i}`}>
               <a href={b.href} target="_blank" rel="noopener noreferrer" className="card-wrapper-link">
-                <div className="card-image-slot">
-                      {cover ? (
-                        <img src={cover} alt={b.alt} className="book-thumbnail" loading="lazy" decoding="async" />
-                      ) : (
-                        <div className="cover-placeholder" aria-hidden="true">
-                          <span className="spark" />
-                          <span>{b.no} · cover pending</span>
-                        </div>
-                      )}
+                                <div className="book-mini">
+                  {cover ? (
+                    <img src={cover} alt={b.alt} className="book-thumbnail" loading="lazy" decoding="async" />
+                  ) : (
+                    <div className="cover-placeholder" aria-hidden="true">
+                      <span className="spark" />
+                      <span>{b.no} • cover pending</span>
                     </div>
+                  )}
+                </div>
                     <div className="card-content-block">
                       <span className="card-tag">
                         {b.no} / {b.tag}
