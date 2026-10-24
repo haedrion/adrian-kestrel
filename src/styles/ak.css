@@ -418,12 +418,13 @@ h1, h2, h3.display {
     text-decoration: none;
 }
 .card-image-slot {
-  width: 400px;       /* 👈 ADD THIS LINE RIGHT HERE */
-  height: 600px;
-  background: #1d2024;
-  border-bottom: var(--border-thin);
-  overflow: hidden;
+  width: 100% !important;
+  height: 320px !important;
+  background: #ffffff !important; /* Keep it white for a quick visual test */
+  border-bottom: var(--border-thin) !important;
+  overflow: hidden !important;
 }
+
 
 .book-thumbnail {
     width: 100%;
