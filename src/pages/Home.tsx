@@ -55,7 +55,7 @@ const BOOKS = [
       "a deep, resonant northern perspective that channels the spirit of traditional storytelling. through testimonies and personal reflections, a gathering of dene elders addresses the climate emergency with intricate knowledge systems and natural laws.",
     href: "https://www.penguinrandomhouse.ca/books/755796/mother-earth-is-our-elder-by-katlia-lafferty/9780771018572",
     year: "2026",
-    cover: "images/elder.jpg",
+    cover: "/images/elder.jpg",
     alt: "mother earth is our elder book cover",
   },
   {
