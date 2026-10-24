@@ -118,8 +118,6 @@ const FEED = [
 ];
 
 
-];
-
 const PALETTE = ["#1A1C1E", "#23262B", "#E4E1D8", "#9EA4A8", "#D68A54"];
 
 export default function Home() {
