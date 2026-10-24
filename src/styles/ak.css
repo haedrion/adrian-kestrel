@@ -420,7 +420,7 @@ h1, h2, h3.display {
 .card-image-slot {
   width: 100%;
   aspect-ratio: 5 / 7; /* Standard elegant book cover dimensions */
-  background: #1d2024;
+  background: #DA06FF;
   border-bottom: var(--border-thin);
   overflow: hidden;
 }
