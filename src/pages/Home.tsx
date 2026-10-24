@@ -55,7 +55,7 @@ const BOOKS = [
       "a deep, resonant northern perspective that channels the spirit of traditional storytelling. through testimonies and personal reflections, a gathering of dene elders addresses the climate emergency with intricate knowledge systems and natural laws.",
     href: "https://www.penguinrandomhouse.ca/books/755796/mother-earth-is-our-elder-by-katlia-lafferty/9780771018572",
     year: "2026",
-    cover: "public/images/elder.jpg",
+    cover: "images/elder.jpg",
     alt: "mother earth is our elder book cover",
   },
   {
@@ -67,7 +67,7 @@ const BOOKS = [
       "evocative, alluring, and truly engrossing. having re-bought this epic tale over and over through the years, i never tire of it. listening to it now on audible, finally hearing the canvas of the carpet unfurl through another's voice.",
     href: "https://www.goodreads.com/en/book/show/52640.Weave_World",
     year: "2026",
-    cover: "/public/images/weaveworld.jpg",
+    cover: "images/weaveworld.jpg",
     alt: "weaveworld by clive barker book cover",
   },
   {
@@ -117,6 +117,8 @@ const FEED = [
   },
 ];
 
+
+];
 
 const PALETTE = ["#1A1C1E", "#23262B", "#E4E1D8", "#9EA4A8", "#D68A54"];
 
@@ -301,42 +303,29 @@ export default function Home() {
           </div>
 
           <section className="reading-ledger-grid">
-                    {BOOKS.map((b, i) => {
-          const cover = b.img;
-          return (
-            <article key={b.no} className={`ledger-card reveal reveal-d${i}`}>
-              <a href={b.href} target="_blank" rel="noopener noreferrer" className="card-wrapper-link">
-                
-                {/* 1. Inserted Book Mini Graphic Container */}
-                <div className="card-image-slot" style={{ width: '100%', aspectRatio: '5/7', background: '#DA06FF', display: 'block' }}>
-                  {cover ? (
-                    <img src={cover} alt={b.alt} className="book-thumbnail" loading="lazy" decoding="async" />
-                  ) : (
-                    <div className="cover-placeholder" aria-hidden="false">
-                      <span className="spark" />
-                      <span>{b.no} • cover pending</span>
+            {BOOKS.map((b, i) => {
+              const cover = b.cover;
+              return (
+                <article key={b.title} className={`ledger-card reveal reveal-d${i}`}>
+                  <a href={b.href} target="_blank" rel="noopener noreferrer" className="card-wrapper-link">
+                    <div className="book-mini">
+                      <img src={cover} alt={b.alt} className="book-thumbnail" />
                     </div>
-                  )}
-                </div>
-
-                {/* 2. Text Details Block */}
-                <div className="card-content-block">
-                  <span className="card-tag">{b.tag}</span>
-                  <h3 className="book-title">{b.title}</h3>
-                  <h4 className="book-author">{b.author}</h4>
-                  <p className="book-review-text">{b.blurb}</p>
-                </div>
-
-                {/* 3. Footer Action */}
-                <div className="card-footer-meta">
-                  <span>notes</span>
-                  <ArrowUpRight className="lucide-arrow-right" />
-                </div>
-
-              </a>
-            </article>
-          );
-        })}
+                    <div className="card-content-block">
+                      <span className="card-tag">
+                        {b.no} / {b.tag}
+                      </span>
+                      <h3 className="book-title">{b.title}</h3>
+                      <h4 className="book-author">{b.author}</h4>
+                      <p className="book-review-text">{b.blurb}</p>
+                      <div className="card-footer-meta">
+                        notes <ArrowRight /> | {b.year}
+                      </div>
+                    </div>
+                  </a>
+                </article>
+              );
+            })}
           </section>
         </div>
       </section>
