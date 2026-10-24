@@ -419,7 +419,7 @@ h1, h2, h3.display {
 }
 .card-image-slot {
   width: 400px;       /* 👈 ADD THIS LINE RIGHT HERE */
-  height: 320px;
+  height: 600px;
   background: #1d2024;
   border-bottom: var(--border-thin);
   overflow: hidden;
