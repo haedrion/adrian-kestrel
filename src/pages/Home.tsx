@@ -115,6 +115,12 @@ const FEED = [
     body: "in may 2026, i won entry into the audible indigenous writers’ circle. i am currently participating in this intensive mentorship program as we draft towards our final portfolio deadlines at the end of december 2026.",
     href: "#dispatches",
   },
+  {
+    date: "2026 · 02 · 8",
+    title: "learning scrivener - first impressions",
+    body: "upfront, i adore it!  it have a learning curve but on par with learning any other novel writter. it not just any tho, with great features that any ocd writer will swear by.",
+    href: "#dispatches",
+  },
 ];
 
 
