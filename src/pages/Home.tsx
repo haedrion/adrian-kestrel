@@ -55,7 +55,7 @@ const BOOKS = [
       "a deep, resonant northern perspective that channels the spirit of traditional storytelling. through testimonies and personal reflections, a gathering of dene elders addresses the climate emergency with intricate knowledge systems and natural laws.",
     href: "https://www.penguinrandomhouse.ca/books/755796/mother-earth-is-our-elder-by-katlia-lafferty/9780771018572",
     year: "2026",
-    cover: "/images/elder.jpg",
+    cover: "images/elder.jpg",
     alt: "mother earth is our elder book cover",
   },
   {
@@ -67,7 +67,7 @@ const BOOKS = [
       "evocative, alluring, and truly engrossing. having re-bought this epic tale over and over through the years, i never tire of it. listening to it now on audible, finally hearing the canvas of the carpet unfurl through another's voice.",
     href: "https://www.goodreads.com/en/book/show/52640.Weave_World",
     year: "2026",
-    cover: "/images/weaveworld.jpg",
+    cover: "images/weaveworld.jpg",
     alt: "weaveworld by clive barker book cover",
   },
   {
@@ -79,7 +79,7 @@ const BOOKS = [
       "a non-stop journey through the veil. this story had me flipping pages deep into the night. magical, mesmerizing, and taut with an imagination that only gaiman at his absolute best can summon from the shadows of london below.",
     href: "https://www.goodreads.com/en/book/show/14497.Neverwhere",
     year: "2026",
-    cover: "/images/neverwhere.jpg",
+    cover: "images/neverwhere.jpg",
     alt: "neverwhere by neil gaiman book cover",
   },
   {
@@ -91,7 +91,7 @@ const BOOKS = [
       "a masterclass on the internal scaffolding of text. mcdonald strips back the fluff to expose the simplicity that holds even the most complex narratives upright. an essential piece of architecture that remains vital to revisit.",
     href: "https://www.goodreads.com/en/book/show/7818660-invisible-ink",
     year: "2026",
-    cover: "/images/invisible-ink.jpg",
+    cover: "images/invisible-ink.jpg",
     alt: "invisible ink by brian mcdonald book cover",
   },
 ];
@@ -99,8 +99,8 @@ const BOOKS = [
 const FEED = [
   {
     date: "2026 · 10 · 22",
-    title: "mock-ups and manuscripts: dressing the narrative skeleton",
-    body: "before a story finds structure on a corkboard, i build its visual architecture. designing the artwork for flutter allowed me to pin down the exact steampunk atmosphere i wanted the characters to inhabit.",
+    title: "mock-ups and manuscripts: curating soundscapes",
+    body: "before a story finds structure on a storyboard, i build its soundscapes. designing the sound of flutter allowed me to pin down the exact steampunk atmosphere i wanted the characters to inhabit.",
     href: "#wip",
   },
   {
@@ -309,7 +309,6 @@ export default function Home() {
           <section className="reading-ledger-grid">
             {BOOKS.map((b, i) => {
               const cover = `${import.meta.env.BASE_URL}${b.cover}`;
-
               return (
                 <article key={b.title} className={`ledger-card reveal reveal-d${i}`}>
                   <a href={b.href} target="_blank" rel="noopener noreferrer" className="card-wrapper-link">
