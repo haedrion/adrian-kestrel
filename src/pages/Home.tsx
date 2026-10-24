@@ -115,31 +115,8 @@ const FEED = [
     body: "in may 2026, i won entry into the audible indigenous writers’ circle. i am currently participating in this intensive mentorship program as we draft towards our final portfolio deadlines at the end of december 2026.",
     href: "#dispatches",
   },
-  {
-    date: "2026 · 02 · 14",
-    title: "hollow hours is out — and the theme builder just went dark",
-    body: "The new novel ships today, and to celebrate, the Scrivener Hybrid Theme Master gained a full dark palette export. This portfolio pairs that charcoal palette with warm paper and terracotta.",
-    href: "#writers-corner",
-  },
-  {
-    date: "2026 · 01 · 27",
-    title: "why every writing tool i build runs locally",
-    body: "Your manuscript is the most personal file on your machine, so none of my utilities ever upload a byte. Here's the local-first architecture behind the .scrtheme exporter.",
-    href: "#writers-corner",
-  },
-  {
-    date: "2025 · 12 · 09",
-    title: "drafting vol. iii: the missing-minute problem",
-    body: "Plotting a novel around a sixty-second gap meant building a timeline Scrivener's corkboard couldn't hold. I ended up writing a wall of index cards — and a small script that became tool no. 02.",
-    href: "#books",
-  },
-  {
-    date: "2025 · 10 · 31",
-    title: "one year of salt & static: reader letters, annotated",
-    body: "Twelve months after release, the strangest fan theories get a reply. Yes, the frequency at the end means exactly what you think it means.",
-    href: "#about",
-  }
 ];
+
 
 const PALETTE = ["#1A1C1E", "#23262B", "#E4E1D8", "#9EA4A8", "#D68A54"];
 
