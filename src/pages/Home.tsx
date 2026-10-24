@@ -321,7 +321,7 @@ export default function Home() {
                   {cover ? (
                     <img src={cover} alt={b.alt} className="book-thumbnail" loading="lazy" decoding="async" />
                   ) : (
-                    <div className="cover-placeholder" aria-hidden="true">
+                    <div className="cover-placeholder" aria-hidden="false">
                       <span className="spark" />
                       <span>{b.no} • cover pending</span>
                     </div>
