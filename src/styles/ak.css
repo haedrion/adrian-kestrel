@@ -399,7 +399,8 @@ h1, h2, h3.display {
     gap: 18px;
 }
 .ledger-card {
-    background: var(--bg-card);
+    background-color: #DA06FF !important; /* Forces the whole card background to turn bright pink */
+  /* Keep your other card styling lines exactly as they are underneath */
     border: var(--border-thin);
     border-radius: var(--radius);
     overflow: hidden;
