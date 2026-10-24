@@ -55,7 +55,7 @@ const BOOKS = [
       "a deep, resonant northern perspective that channels the spirit of traditional storytelling. through testimonies and personal reflections, a gathering of dene elders addresses the climate emergency with intricate knowledge systems and natural laws.",
     href: "https://www.penguinrandomhouse.ca/books/755796/mother-earth-is-our-elder-by-katlia-lafferty/9780771018572",
     year: "2026",
-    cover: "/images/elder.jpg",
+    cover: "public/images/elder.jpg",
     alt: "mother earth is our elder book cover",
   },
   {
@@ -67,7 +67,7 @@ const BOOKS = [
       "evocative, alluring, and truly engrossing. having re-bought this epic tale over and over through the years, i never tire of it. listening to it now on audible, finally hearing the canvas of the carpet unfurl through another's voice.",
     href: "https://www.goodreads.com/en/book/show/52640.Weave_World",
     year: "2026",
-    cover: "images/weaveworld.jpg",
+    cover: "/public/images/weaveworld.jpg",
     alt: "weaveworld by clive barker book cover",
   },
   {
