@@ -308,7 +308,7 @@ export default function Home() {
               return (
                 <article key={b.title} className={`ledger-card reveal reveal-d${i}`}>
                   <a href={b.href} target="_blank" rel="noopener noreferrer" className="card-wrapper-link">
-                    <div className="book-mini">
+                    <div className="card-image-slot">
                       <img src={cover} alt={b.alt} className="book-thumbnail" />
                     </div>
                     <div className="card-content-block">
