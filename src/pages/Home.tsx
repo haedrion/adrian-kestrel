@@ -308,7 +308,8 @@ export default function Home() {
 
           <section className="reading-ledger-grid">
             {BOOKS.map((b, i) => {
-              const cover = b.cover;
+              const cover = `${import.meta.env.BASE_URL}${b.cover}`;
+
               return (
                 <article key={b.title} className={`ledger-card reveal reveal-d${i}`}>
                   <a href={b.href} target="_blank" rel="noopener noreferrer" className="card-wrapper-link">
