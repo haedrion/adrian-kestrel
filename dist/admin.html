@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#1A1C1E" />
+    <title>private admin · content formatting manager</title>
+    <style>
+      :root {
+        --bg-main: #1A1C1E;
+        --bg-card: #23262B;
+        --text-primary: #E4E1D8;
+        --text-muted: #9EA4A8;
+        --color-accent: #D68A54;
+        --accent-deep: #B96F3D;
+        --accent-soft: rgba(214, 138, 84, 0.12);
+        --border-color: #31353D;
+        --border-thin: 1px solid #31353D;
+        --highlight: #009984;
+        --radius: 7px;
+        --sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --mono: "IBM Plex Mono", SFMono-Regular, Consolas, monospace;
+        color-scheme: dark;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        min-height: 100vh;
+        background: var(--bg-main);
+        color: var(--text-primary);
+        font-family: var(--sans);
+        font-size: 14px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      button, input, textarea { font: inherit; }
+      button { cursor: pointer; }
+      :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+      ::selection { background: var(--color-accent); color: var(--bg-main); }
+
+      .admin-shell {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 34px 0 42px;
+      }
+
+      .admin-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 24px;
+        padding-bottom: 22px;
+        border-bottom: var(--border-thin);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--color-accent);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.19em;
+        text-transform: lowercase;
+      }
+
+      .spark {
+        width: 6px;
+        height: 6px;
+        display: inline-block;
+        border: 1px solid var(--color-accent);
+        transform: rotate(45deg);
+      }
+
+      h1 {
+        margin-top: 10px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(30px, 4vw, 46px);
+        font-weight: 400;
+        letter-spacing: -0.04em;
+        line-height: 1.05;
+        text-transform: lowercase;
+      }
+
+      .head-note {
+        max-width: 360px;
+        color: var(--text-muted);
+        font-size: 12px;
+        line-height: 1.65;
+        text-transform: lowercase;
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        flex: none;
+        padding: 5px 12px;
+        border: var(--border-thin);
+        border-radius: 999px;
+        color: var(--text-muted);
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: lowercase;
+      }
+
+      .status-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--highlight);
+        box-shadow: 0 0 8px var(--highlight);
+      }
+
+      .admin-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+        gap: 22px;
+        align-items: start;
+        margin-top: 24px;
+      }
+
+      .panel {
+        border: var(--border-thin);
+        border-radius: 10px;
+        background: var(--bg-card);
+        overflow: hidden;
+      }
+
+      .panel-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 20px 20px 14px;
+        border-bottom: var(--border-thin);
+      }
+
+      .panel-head h2 {
+        margin-top: 7px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 23px;
+        font-weight: 400;
+        letter-spacing: -0.03em;
+        line-height: 1.12;
+        text-transform: lowercase;
+      }
+
+      .panel-body { padding: 20px; }
+
+      .field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+      .field:last-child { margin-bottom: 0; }
+
+      label, .field-label {
+        color: var(--text-muted);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: lowercase;
+      }
+
+      input[type="text"], textarea {
+        width: 100%;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius);
+        background: var(--bg-card);
+        color: var(--text-primary);
+        padding: 11px 12px;
+        font-size: 13px;
+        line-height: 1.55;
+        text-transform: lowercase;
+        transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+      }
+
+      textarea { min-height: 168px; resize: vertical; }
+
+      input[type="text"]::placeholder, textarea::placeholder {
+        color: rgba(158, 164, 168, 0.72);
+        text-transform: lowercase;
+      }
+
+      input[type="text"]:hover, textarea:hover { border-color: rgba(214, 138, 84, 0.48); }
+      input[type="text"]:focus, textarea:focus {
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 3px rgba(214, 138, 84, 0.16);
+        outline: none;
+      }
+
+      .field-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        min-height: 20px;
+      }
+
+      .helper {
+        color: var(--text-muted);
+        font-size: 11px;
+        line-height: 1.5;
+        text-transform: lowercase;
+      }
+
+      .word-counter {
+        flex: none;
+        color: var(--text-muted);
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.02em;
+        text-transform: lowercase;
+      }
+
+      .word-counter.error {
+        color: var(--color-accent);
+        font-weight: 700;
+      }
+
+      textarea.error {
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 3px rgba(214, 138, 84, 0.14);
+      }
+
+      .drop-zone {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        min-height: 178px;
+        padding: 20px;
+        border: 1.5px dashed rgba(214, 138, 84, 0.62);
+        border-radius: 10px;
+        background: rgba(214, 138, 84, 0.04);
+        color: var(--text-muted);
+        text-align: center;
+        cursor: pointer;
+        transition: border-color 0.2s, background-color 0.2s, color 0.2s, transform 0.2s;
+      }
+
+      .drop-zone:hover, .drop-zone.is-over {
+        border-color: var(--color-accent);
+        background: rgba(214, 138, 84, 0.09);
+        color: var(--text-primary);
+      }
+
+      .drop-zone.is-over { transform: translateY(-1px); }
+
+      .drop-icon {
+        display: grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        border: 1px solid rgba(214, 138, 84, 0.45);
+        border-radius: 50%;
+        color: var(--color-accent);
+        font-family: var(--mono);
+        font-size: 18px;
+        line-height: 1;
+      }
+
+      .drop-title {
+        color: var(--text-primary);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: lowercase;
+      }
+
+      .drop-copy {
+        max-width: 300px;
+        font-size: 11px;
+        line-height: 1.55;
+        text-transform: lowercase;
+      }
+
+      .asset-preview {
+        display: none;
+        width: 100%;
+        margin-top: 14px;
+        border: var(--border-thin);
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--bg-main);
+      }
+
+      .asset-preview.visible { display: block; }
+
+      .asset-preview img {
+        display: block;
+        width: 100%;
+        max-height: 240px;
+        object-fit: cover;
+      }
+
+      .asset-meta {
+        padding: 10px 12px;
+        border-top: var(--border-thin);
+        color: var(--text-muted);
+        font-family: var(--mono);
+        font-size: 10.5px;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+        text-transform: lowercase;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .copy-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        min-height: 46px;
+        padding: 10px 16px;
+        border: 1px solid var(--color-accent);
+        border-radius: var(--radius);
+        background: var(--color-accent);
+        color: var(--bg-main);
+        font-size: 12.5px;
+        font-weight: 700;
+        letter-spacing: -0.005em;
+        text-transform: lowercase;
+        transition: background-color 0.2s, border-color 0.2s, transform 0.2s, opacity 0.2s;
+      }
+
+      .copy-button:hover:not(:disabled) { background: #e29a66; transform: translateY(-2px); }
+      .copy-button:active:not(:disabled) { transform: translateY(0); }
+      .copy-button:disabled { cursor: not-allowed; opacity: 0.48; }
+
+      .ghost-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 10px 16px;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius);
+        background: transparent;
+        color: var(--text-muted);
+        font-size: 12.5px;
+        font-weight: 700;
+        text-transform: lowercase;
+        transition: color 0.2s, border-color 0.2s, transform 0.2s;
+      }
+
+      .ghost-button:hover { color: var(--text-primary); border-color: rgba(214, 138, 84, 0.55); transform: translateY(-2px); }
+
+      .copy-status {
+        min-height: 20px;
+        margin-top: 12px;
+        color: var(--text-muted);
+        font-size: 11px;
+        text-transform: lowercase;
+      }
+
+      .copy-status.success { color: var(--highlight); }
+      .copy-status.error { color: var(--color-accent); font-weight: 700; }
+
+      .output-wrap { display: flex; flex-direction: column; min-height: 100%; }
+
+      .output-code {
+        flex: 1;
+        min-height: 560px;
+        max-height: calc(100vh - 190px);
+        overflow: auto;
+        padding: 18px;
+        background: var(--bg-main);
+        color: var(--text-primary);
+        font-family: var(--mono);
+        font-size: 11.5px;
+        line-height: 1.65;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .output-note {
+        padding: 13px 18px;
+        border-top: var(--border-thin);
+        color: var(--text-muted);
+        font-size: 11px;
+        line-height: 1.55;
+        text-transform: lowercase;
+      }
+
+      .invalid { color: var(--color-accent); font-weight: 700; }
+
+      @media (max-width: 860px) {
+        .admin-head { align-items: flex-start; flex-direction: column; }
+        .admin-grid { grid-template-columns: minmax(0, 1fr); }
+        .output-code { min-height: 420px; max-height: none; }
+      }
+
+      @media (max-width: 560px) {
+        .admin-shell { width: min(100% - 28px, 1180px); padding-top: 24px; }
+        .panel-head, .panel-body { padding-left: 16px; padding-right: 16px; }
+        .field-meta { align-items: flex-start; flex-direction: column; gap: 3px; }
+        .actions > * { width: 100%; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="admin-shell">
+      <header class="admin-head">
+        <div>
+          <span class="eyebrow"><span class="spark"></span> private administration · local-first</span>
+          <h1>content formatting manager</h1>
+        </div>
+        <span class="status-pill"><span class="status-dot"></span> browser only · no uploads</span>
+      </header>
+
+      <section class="admin-grid" aria-label="content formatting workspace">
+        <form class="panel" id="contentForm" autocomplete="off">
+          <div class="panel-head">
+            <div>
+              <span class="eyebrow"><span class="spark"></span> input</span>
+              <h2>draft the package.</h2>
+            </div>
+          </div>
+
+          <div class="panel-body">
+            <div class="field">
+              <label for="titleInput">title</label>
+              <input id="titleInput" type="text" placeholder="enter a title" />
+            </div>
+
+            <div class="field">
+              <label for="descriptionInput">description</label>
+              <textarea id="descriptionInput" placeholder="write the description text block"></textarea>
+              <div class="field-meta">
+                <span class="helper" id="descriptionHint">plain text in. formatted package out.</span>
+                <span class="word-counter" id="wordCounter" aria-live="polite">0 / 50 words</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <span class="field-label" id="dropZoneLabel">visual asset</span>
+              <div
+                class="drop-zone"
+                id="dropZone"
+                role="button"
+                tabindex="0"
+                aria-labelledby="dropZoneLabel dropZoneTitle"
+              >
+                <span class="drop-icon" aria-hidden="true">+</span>
+                <span class="drop-title" id="dropZoneTitle">visual asset drop zone</span>
+                <span class="drop-copy" id="dropZoneCopy">drop an image here, or click to browse. resizing happens locally in the browser.</span>
+                <input id="assetInput" type="file" accept="image/*" hidden />
+              </div>
+
+              <div class="asset-preview" id="assetPreviewWrap">
+                <img id="assetPreview" alt="resized visual asset preview" />
+                <div class="asset-meta" id="assetMeta"></div>
+              </div>
+              <p class="helper" id="assetStatus">maximum output width: 1200px. aspect ratio is preserved.</p>
+            </div>
+
+            <div class="actions">
+              <button class="copy-button" id="copyButton" type="button">copy formatted package</button>
+              <button class="ghost-button" id="resetButton" type="button">reset fields</button>
+            </div>
+            <p class="copy-status" id="copyStatus" aria-live="polite">ready when you are.</p>
+          </div>
+        </form>
+
+        <section class="panel output-wrap" aria-labelledby="outputHeading">
+          <div class="panel-head">
+            <div>
+              <span class="eyebrow"><span class="spark"></span> output</span>
+              <h2 id="outputHeading">formatted code.</h2>
+            </div>
+            <span class="status-pill" id="packageStatus"><span class="status-dot"></span> ready</span>
+          </div>
+          <pre class="output-code"><code id="outputCode"></code></pre>
+          <p class="output-note" id="outputNote">the package updates as you type. image data stays in this browser tab.</p>
+        </section>
+      </section>
+    </main>
+
+    <script>
+      const titleInput = document.getElementById('titleInput');
+      const descriptionInput = document.getElementById('descriptionInput');
+      const descriptionHint = document.getElementById('descriptionHint');
+      const wordCounter = document.getElementById('wordCounter');
+      const dropZone = document.getElementById('dropZone');
+      const assetInput = document.getElementById('assetInput');
+      const assetPreviewWrap = document.getElementById('assetPreviewWrap');
+      const assetPreview = document.getElementById('assetPreview');
+      const assetMeta = document.getElementById('assetMeta');
+      const assetStatus = document.getElementById('assetStatus');
+      const copyButton = document.getElementById('copyButton');
+      const resetButton = document.getElementById('resetButton');
+      const copyStatus = document.getElementById('copyStatus');
+      const outputCode = document.getElementById('outputCode');
+      const packageStatus = document.getElementById('packageStatus');
+      const outputNote = document.getElementById('outputNote');
+
+      const WORD_LIMIT = 50;
+      const MAX_IMAGE_WIDTH = 1200;
+
+      const state = {
+        asset: null,
+      };
+
+      function forceLowercase(field) {
+        const start = field.selectionStart;
+        const end = field.selectionEnd;
+        const lowered = field.value.toLowerCase();
+        if (field.value !== lowered) {
+          field.value = lowered;
+          if (typeof start === 'number' && typeof end === 'number') {
+            field.setSelectionRange(start, end);
+          }
+        }
+      }
+
+      function countWords(value) {
+        const text = value.trim().toLowerCase();
+        if (!text) return 0;
+        return text.split(/\s+/).filter(Boolean).length;
+      }
+
+      function buildPackage() {
+        const description = descriptionInput.value.toLowerCase();
+        const words = countWords(description);
+        return {
+          title: titleInput.value.toLowerCase(),
+          description,
+          wordCount: words,
+          wordLimit: WORD_LIMIT,
+          valid: words <= WORD_LIMIT,
+          asset: state.asset,
+        };
+      }
+
+      function render() {
+        forceLowercase(titleInput);
+        forceLowercase(descriptionInput);
+
+        const pkg = buildPackage();
+        const overLimit = pkg.wordCount > WORD_LIMIT;
+
+        wordCounter.textContent = `${pkg.wordCount} / ${WORD_LIMIT} words`;
+        wordCounter.classList.toggle('error', overLimit);
+        descriptionInput.classList.toggle('error', overLimit);
+        descriptionHint.textContent = overLimit
+          ? `over limit · trim ${pkg.wordCount - WORD_LIMIT} word${pkg.wordCount - WORD_LIMIT === 1 ? '' : 's'} to validate.`
+          : 'plain text in. formatted package out.';
+        copyButton.disabled = overLimit;
+        packageStatus.innerHTML = overLimit
+          ? '<span class="status-dot"></span> <span class="invalid">invalid</span>'
+          : '<span class="status-dot"></span> ready';
+        outputNote.textContent = overLimit
+          ? 'the formatted package is marked invalid until the description is back under the limit.'
+          : 'the package updates as you type. image data stays in this browser tab.';
+
+        outputCode.textContent = JSON.stringify(pkg, null, 2);
+        return pkg;
+      }
+
+      function setStatus(message, kind = '') {
+        copyStatus.textContent = message;
+        copyStatus.className = `copy-status ${kind}`.trim();
+      }
+
+      function processImageFile(file) {
+        if (!file) return;
+        if (!file.type.startsWith('image/')) {
+          setStatus('please drop an image file.', 'error');
+          assetStatus.textContent = 'that file was not an image. nothing was changed.';
+          return;
+        }
+
+        const objectUrl = URL.createObjectURL(file);
+        const image = new Image();
+
+        image.onload = () => {
+          const scale = Math.min(1, MAX_IMAGE_WIDTH / image.naturalWidth);
+          const width = Math.max(1, Math.round(image.naturalWidth * scale));
+          const height = Math.max(1, Math.round(image.naturalHeight * scale));
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+
+          const context = canvas.getContext('2d');
+          if (!context) {
+            URL.revokeObjectURL(objectUrl);
+            setStatus('canvas is unavailable in this browser.', 'error');
+            return;
+          }
+
+          context.drawImage(image, 0, 0, width, height);
+          URL.revokeObjectURL(objectUrl);
+
+          const outputType = ['image/jpeg', 'image/png', 'image/webp'].includes(file.type) ? file.type : 'image/png';
+          canvas.toBlob((blob) => {
+            if (!blob) {
+              setStatus('the image could not be resized.', 'error');
+              return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = () => {
+              state.asset = {
+                fileName: file.name,
+                type: outputType,
+                originalWidth: image.naturalWidth,
+                originalHeight: image.naturalHeight,
+                width,
+                height,
+                maxWidth: MAX_IMAGE_WIDTH,
+                dataUrl: String(reader.result),
+              };
+
+              assetPreview.src = state.asset.dataUrl;
+              assetPreviewWrap.classList.add('visible');
+              assetMeta.textContent = `${file.name} · ${image.naturalWidth}×${image.naturalHeight} → ${width}×${height} · ${outputType}`;
+              assetStatus.textContent = 'resized locally on a canvas. the original file was not uploaded.';
+              setStatus('visual asset added to the package.', 'success');
+              render();
+            };
+            reader.onerror = () => setStatus('the resized image could not be read.', 'error');
+            reader.readAsDataURL(blob);
+          }, outputType, 0.9);
+        };
+
+        image.onerror = () => {
+          URL.revokeObjectURL(objectUrl);
+          setStatus('the image could not be opened.', 'error');
+        };
+
+        image.src = objectUrl;
+      }
+
+      titleInput.addEventListener('input', render);
+      descriptionInput.addEventListener('input', render);
+
+      dropZone.addEventListener('click', () => assetInput.click());
+      dropZone.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          assetInput.click();
+        }
+      });
+
+      assetInput.addEventListener('change', () => {
+        processImageFile(assetInput.files && assetInput.files[0]);
+        assetInput.value = '';
+      });
+
+      ['dragenter', 'dragover'].forEach((eventName) => {
+        dropZone.addEventListener(eventName, (event) => {
+          event.preventDefault();
+          dropZone.classList.add('is-over');
+        });
+      });
+
+      ['dragleave', 'drop'].forEach((eventName) => {
+        dropZone.addEventListener(eventName, (event) => {
+          event.preventDefault();
+          dropZone.classList.remove('is-over');
+        });
+      });
+
+      dropZone.addEventListener('drop', (event) => {
+        const file = event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files[0];
+        processImageFile(file);
+      });
+
+      copyButton.addEventListener('click', async () => {
+        const pkg = render();
+        if (!pkg.valid) {
+          setStatus('trim the description to 50 words or fewer before copying.', 'error');
+          return;
+        }
+
+        const text = JSON.stringify(pkg, null, 2);
+        try {
+          await navigator.clipboard.writeText(text);
+          setStatus('formatted package copied.', 'success');
+        } catch (error) {
+          const fallback = document.createElement('textarea');
+          fallback.value = text;
+          fallback.setAttribute('readonly', '');
+          fallback.style.position = 'fixed';
+          fallback.style.opacity = '0';
+          document.body.appendChild(fallback);
+          fallback.select();
+          document.execCommand('copy');
+          fallback.remove();
+          setStatus('formatted package copied.', 'success');
+        }
+      });
+
+      resetButton.addEventListener('click', () => {
+        titleInput.value = '';
+        descriptionInput.value = '';
+        state.asset = null;
+        assetPreview.removeAttribute('src');
+        assetPreviewWrap.classList.remove('visible');
+        assetMeta.textContent = '';
+        assetStatus.textContent = 'maximum output width: 1200px. aspect ratio is preserved.';
+        setStatus('ready when you are.');
+        render();
+        titleInput.focus();
+      });
+
+      render();
+    </script>
+  </body>
+</html>

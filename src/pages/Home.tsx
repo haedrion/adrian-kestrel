@@ -99,8 +99,8 @@ const BOOKS = [
 const FEED = [
   {
     date: "2026 · 10 · 22",
-    title: "mock-ups and manuscripts: curating soundscapes",
-    body: "before a story finds structure on a storyboard, i build its soundscapes. designing the sound of flutter allowed me to pin down the exact steampunk atmosphere i wanted the characters to inhabit.",
+    title: "mock-ups and manuscripts: dressing the narrative skeleton",
+    body: "before a story finds structure on a corkboard, i build its visual architecture. designing the artwork for flutter allowed me to pin down the exact steampunk atmosphere i wanted the characters to inhabit.",
     href: "#wip",
   },
   {
@@ -308,7 +308,7 @@ export default function Home() {
 
           <section className="reading-ledger-grid">
             {BOOKS.map((b, i) => {
-              const cover = `${import.meta.env.BASE_URL}${b.cover}`;
+              const cover = b.cover;
               return (
                 <article key={b.title} className={`ledger-card reveal reveal-d${i}`}>
                   <a href={b.href} target="_blank" rel="noopener noreferrer" className="card-wrapper-link">
