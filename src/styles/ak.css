@@ -420,7 +420,7 @@ h1, h2, h3.display {
 .card-image-slot {
   width: 100%;       /* 👈 ADD THIS LINE RIGHT HERE */
   height: 320px;
-  background: #1d2024;
+  background: #ffffff;
   border-bottom: var(--border-thin);
   overflow: hidden;
 }
